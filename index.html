@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>续命中心</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <div id="boss-mode-content" style="display: none;">
+        <div class="ide-container">
+            <!-- 顶部菜单栏 -->
+            <div class="ide-menubar">
+                <div class="ide-logo">
+                    <span>VS Code</span>
+                </div>
+                <div class="ide-menu-items">
+                    <span>文件</span>
+                    <span>编辑</span>
+                    <span>选择</span>
+                    <span>查看</span>
+                    <span>转到</span>
+                    <span>运行</span>
+                    <span>终端</span>
+                    <span>帮助</span>
+                </div>
+            </div>
+            
+            <!-- 主体内容区 -->
+            <div class="ide-main">
+                <!-- 左侧边栏 -->
+                <div class="ide-sidebar">
+                    <div class="sidebar-icons">
+                        <div class="sidebar-icon active"><i class="icon-files"></i></div>
+                        <div class="sidebar-icon"><i class="icon-search"></i></div>
+                        <div class="sidebar-icon"><i class="icon-git"></i></div>
+                        <div class="sidebar-icon"><i class="icon-debug"></i></div>
+                        <div class="sidebar-icon"><i class="icon-extensions"></i></div>
+                    </div>
+                    
+                    <!-- 文件浏览器 -->
+                    <div class="file-explorer">
+                        <div class="explorer-header">
+                            <span>资源管理器</span>
+                        </div>
+                        
+                        <div class="project-name">
+                            <span class="folder-icon"></span>
+                            <span>项目名称</span>
+                        </div>
+                        
+                        <div class="file-tree">
+                            <div class="folder">
+                                <div class="folder-header">
+                                    <span class="folder-icon"></span>
+                                    <span>src</span>
+                                </div>
+                                <div class="folder-content">
+                                    <div class="folder">
+                                        <div class="folder-header">
+                                            <span class="folder-icon"></span>
+                                            <span>components</span>
+                                        </div>
+                                        <div class="folder-content">
+                                            <div class="file-item">Header.tsx</div>
+                                            <div class="file-item">Footer.tsx</div>
+                                            <div class="file-item">Sidebar.tsx</div>
+                                            <div class="file-item">DataTable.tsx</div>
+                                        </div>
+                                    </div>
+                                    <div class="folder">
+                                        <div class="folder-header">
+                                            <span class="folder-icon"></span>
+                                            <span>utils</span>
+                                        </div>
+                                        <div class="folder-content">
+                                            <div class="file-item">formatter.ts</div>
+                                            <div class="file-item">logger.ts</div>
+                                            <div class="file-item">helpers.ts</div>
+                                        </div>
+                                    </div>
+                                    <div class="folder">
+                                        <div class="folder-header">
+                                            <span class="folder-icon"></span>
+                                            <span>api</span>
+                                        </div>
+                                        <div class="folder-content">
+                                            <div class="file-item">dataService.ts</div>
+                                            <div class="file-item">authService.ts</div>
+                                        </div>
+                                    </div>
+                                    <div class="file-item active">DataProcessor.tsx</div>
+                                    <div class="file-item">App.tsx</div>
+                                    <div class="file-item">index.tsx</div>
+                                </div>
+                            </div>
+                            <div class="file-item">package.json</div>
+                            <div class="file-item">tsconfig.json</div>
+                            <div class="file-item">README.md</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 编辑器区域 -->
+                <div class="ide-editor">
+                    <!-- 标签页 -->
+                    <div class="editor-tabs">
+                        <div class="tab active">
+                            <span>DataProcessor.tsx</span>
+                            <span class="close-tab">×</span>
+                        </div>
+                        <div class="tab">
+                            <span>App.tsx</span>
+                            <span class="close-tab">×</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 代码编辑区 -->
+                    <div class="code-container">
+                        <div class="line-numbers">
+                            <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+                            <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
+                            <div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
+                            <div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
+                            <div>21</div><div>22</div><div>23</div><div>24</div><div>25</div>
+                            <div>26</div><div>27</div><div>28</div><div>29</div><div>30</div>
+                            <div>31</div><div>32</div><div>33</div><div>34</div><div>35</div>
+                            <div>36</div><div>37</div><div>38</div><div>39</div><div>40</div>
+                            <div>41</div><div>42</div><div>43</div><div>44</div><div>45</div>
+                            <div>46</div><div>47</div><div>48</div><div>49</div><div>50</div>
+                            <div>51</div><div>52</div><div>53</div><div>54</div><div>55</div>
+                            <div>56</div><div>57</div><div>58</div><div>59</div><div>60</div>
+                            <div>61</div><div>62</div><div>63</div><div>64</div><div>65</div>
+                            <div>66</div><div>67</div><div>68</div><div>69</div><div>70</div>
+                            <div>71</div><div>72</div><div>73</div><div>74</div><div>75</div>
+                            <div>76</div><div>77</div><div>78</div><div>79</div><div>80</div>
+                            <div>81</div><div>82</div><div>83</div><div>84</div><div>85</div>
+                            <div>86</div><div>87</div><div>88</div><div>89</div><div>90</div>
+                            <div>91</div><div>92</div><div>93</div><div>94</div><div>95</div>
+                            <div>96</div><div>97</div><div>98</div><div>99</div><div>100</div>
+                        </div>
+                        <div class="code-editor" id="code-editor">
+                            <!-- 代码内容将由JavaScript动态生成 -->
+                        </div>
+                        <span id="typing-cursor" class="cursor">|</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部状态栏 -->
+            <div class="ide-statusbar">
+                <div class="status-left">
+                    <span class="git-branch">main</span>
+                    <span class="sync-icon">↻</span>
+                    <span class="errors-warnings">0 ✓ 0 ⚠</span>
+                </div>
+                <div class="status-right">
+                    <span>UTF-8</span>
+                    <span>TypeScript React</span>
+                    <span>空格: 2</span>
+                    <span>行 1, 列 1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-content" class="container">
+        <header class="main-header">
+            <h1>续命中心</h1>
+        </header>
+
+        <main class="main-grid">
+            <!-- 核心：倒计时 -->
+            <section id="countdown-section" class="countdown-container">
+                <p class="countdown-label">距离解放还有</p>
+                <div id="countdown-timer-wrapper">
+                    <span id="countdown-timer">--</span>
+                    <span class="days-text">天</span>
+                </div>
+                <div id="settings-toggle" onclick="toggleSettings()">⚙️</div>
+                <div id="settings-panel">
+                    <div class="countdown-controls">
+                        <input type="date" id="resignation-date">
+                        <button onclick="setResignationDate()">设定</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 精神食粮 -->
+            <section id="joke-section" class="joke-container">
+                <p id="joke-text">正在下载今日份续命包...</p>
+                <button onclick="getNewJoke()">续一杯</button>
+            </section>
+
+            <!-- 摸鱼专区 -->
+            <section id="games-section" class="games-container">
+                <h3>摸鱼调节剂</h3>
+                <div class="game-list">
+                    <a onclick="openGame('games/progress_bar.html')">下班进度条</a>
+                    <a onclick="openGame('games/whack_a_boss.html')">狂点老板</a>
+                    <a onclick="openGame('games/coin_catcher.html')">摸鱼接金币</a>
+                </div>
+            </section>
+
+            <!-- 磁场转换 -->
+            <section id="fortune-section" class="fortune-container">
+                <h3>磁场转换器</h3>
+                <div id="fortune-display">
+                    <p id="fortune-text">点击按钮，转换今日磁场</p>
+                </div>
+                <button id="fortune-btn" onclick="changeFortune()">启动好运</button>
+            </section>
+        </main>
+
+        <!-- 游戏内嵌显示区域 -->
+        <div id="game-display-section" style="display: none;">
+            <div class="iframe-wrapper">
+                <button id="close-game-btn" onclick="closeGame()">[ 关闭 ]</button>
+                <iframe id="game-iframe" src="" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <footer class="main-footer">
+            <p id="motto-text">正在同步打工人语录...</p>
+            <div class="footer-actions">
+                <button onclick="generatePoster()">生成续命海报</button>
+                <p>按 <kbd>Esc</kbd> 键切换至摸鱼模式</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

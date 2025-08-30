@@ -1,0 +1,674 @@
+:root {
+    --bg-color: #1a1a1a;
+    --primary-glow-color: rgba(0, 255, 135, 0.75);
+    --secondary-glow-color: rgba(74, 144, 226, 0.8);
+    --text-color: #e0e0e0;
+    --light-text-color: #888;
+    --font-display: 'Roboto Mono', monospace;
+    --font-body: 'ZCOOL KuaiLe', sans-serif;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+    0%, 100% { text-shadow: 0 0 5px var(--primary-glow-color), 0 0 10px var(--primary-glow-color); }
+    50% { text-shadow: 0 0 10px var(--primary-glow-color), 0 0 20px var(--primary-glow-color); }
+}
+
+@keyframes background-pan {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    background: linear-gradient(90deg, #1a1a1a, #383838, #1a1a1a);
+    background-size: 200% 100%;
+    animation: background-pan 10s ease-in-out infinite;
+    color: var(--text-color);
+    font-family: var(--font-body);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    animation: fadeIn 1s ease-out;
+}
+
+.main-header h1 {
+    font-size: 2.5em;
+    font-weight: normal;
+    color: var(--text-color);
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+    text-shadow: 0 0 3px var(--secondary-glow-color);
+}
+
+.main-grid {
+    display: grid;
+    grid-template-areas:
+        "countdown"
+        "joke"
+        "games"
+        "fortune";
+    gap: 40px;
+}
+
+/* --- 倒计时 --- */
+.countdown-container {
+    grid-area: countdown;
+    padding: 20px;
+    position: relative;
+}
+
+.countdown-label {
+    font-size: 1.5em;
+    color: var(--light-text-color);
+    margin: 0 0 10px;
+}
+
+#countdown-timer-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    line-height: 1;
+}
+
+#countdown-timer {
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 25vw, 12rem);
+    font-weight: 700;
+    color: var(--primary-glow-color);
+    animation: glow 3s ease-in-out infinite;
+}
+
+.days-text {
+    font-size: 1.5em;
+    color: var(--primary-glow-color);
+    margin-left: 15px;
+    animation: glow 3s ease-in-out infinite;
+}
+
+#settings-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--light-text-color);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#settings-toggle:hover {
+    color: var(--text-color);
+    transform: rotate(90deg);
+}
+
+#settings-panel {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background: rgba(44, 44, 44, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--light-text-color);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 100;
+}
+
+#settings-panel.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.countdown-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+input[type="date"], button {
+    background: transparent;
+    border: 1px solid var(--light-text-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-family: var(--font-body);
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+button {
+    cursor: pointer;
+    border-color: var(--primary-glow-color);
+    color: var(--primary-glow-color);
+}
+
+button:hover {
+    background: var(--primary-glow-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--primary-glow-color);
+}
+
+/* --- 段子 --- */
+.joke-container {
+    grid-area: joke;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#joke-text {
+    font-size: 1.4em;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0;
+    color: var(--text-color);
+}
+
+/* --- 游戏 --- */
+.games-container {
+    grid-area: games;
+    padding-top: 20px;
+    border-top: 1px solid var(--light-text-color);
+}
+
+.games-container h3 {
+    font-size: 1.2em;
+    color: var(--light-text-color);
+    margin: 0 0 15px;
+    font-weight: normal;
+}
+
+.game-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.game-list a {
+    color: var(--secondary-glow-color);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.game-list a:hover {
+    color: var(--text-color);
+    text-shadow: 0 0 5px var(--secondary-glow-color);
+}
+
+/* --- 磁场转换 --- */
+.fortune-container {
+    grid-area: fortune;
+    padding-top: 20px;
+    border-top: 1px solid var(--light-text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.fortune-container h3 {
+    font-size: 1.2em;
+    color: var(--light-text-color);
+    margin: 0;
+    font-weight: normal;
+}
+
+#fortune-display {
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#fortune-text {
+    font-size: 1.4em;
+    color: var(--primary-glow-color);
+    text-shadow: 0 0 5px var(--primary-glow-color);
+    margin: 0;
+    transition: all 0.5s ease;
+}
+
+#fortune-btn {
+    border-color: var(--secondary-glow-color);
+    color: var(--secondary-glow-color);
+}
+
+#fortune-btn:hover {
+    background: var(--secondary-glow-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--secondary-glow-color);
+}
+
+/* 磁场转换动画 */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.spinning {
+    display: inline-block;
+    animation: spin 1s linear infinite;
+    font-size: 1.5em; /* 调整图标大小 */
+}
+
+
+/* --- 内嵌游戏 --- */
+#game-display-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.iframe-wrapper {
+    width: 90%;
+    height: 85%;
+    max-width: 1000px;
+    position: relative;
+}
+
+#close-game-btn {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--light-text-color);
+    font-size: 1.2em;
+    cursor: pointer;
+}
+#close-game-btn:hover {
+    color: var(--text-color);
+}
+
+#game-iframe {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--light-text-color);
+    border-radius: 8px;
+}
+
+/* --- 页脚 --- */
+.main-footer {
+    margin-top: 50px;
+    color: var(--light-text-color);
+    font-size: 0.9em;
+}
+
+.footer-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#poster-btn {
+    border-color: var(--secondary-glow-color);
+    color: var(--secondary-glow-color);
+}
+
+#poster-btn:hover {
+    background: var(--secondary-glow-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--secondary-glow-color);
+}
+
+#motto-text {
+    margin-bottom: 10px;
+    font-style: italic;
+    height: 1.2em; /* Prevent layout shift */
+    color: var(--secondary-glow-color);
+    text-shadow: 0 0 3px var(--secondary-glow-color);
+    transition: all 0.5s ease;
+}
+
+kbd {
+    background-color: #333;
+    border-radius: 3px;
+    border: 1px solid #555;
+    padding: 2px 6px;
+}
+
+/* --- 伪装编程界面样式 --- */
+.ide-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Consolas', 'Courier New', monospace;
+    overflow: hidden;
+}
+
+/* 顶部菜单栏 */
+.ide-menubar {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    background-color: #333333;
+    padding: 0 10px;
+    font-size: 12px;
+}
+
+.ide-logo {
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.ide-menu-items {
+    display: flex;
+}
+
+.ide-menu-items span {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+/* 主体内容区 */
+.ide-main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* 左侧边栏 */
+.ide-sidebar {
+    display: flex;
+    width: 250px;
+    background-color: #252526;
+    border-right: 1px solid #1e1e1e;
+}
+
+.sidebar-icons {
+    display: flex;
+    flex-direction: column;
+    width: 48px;
+    background-color: #333333;
+    padding-top: 10px;
+}
+
+.sidebar-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    cursor: pointer;
+    color: #858585;
+}
+
+.sidebar-icon.active {
+    color: #ffffff;
+    border-left: 2px solid #007acc;
+}
+
+.sidebar-icon i {
+    font-size: 24px;
+}
+
+/* 文件图标 */
+.icon-files::before { content: "📁"; }
+.icon-search::before { content: "🔍"; }
+.icon-git::before { content: "⑂"; }
+.icon-debug::before { content: "⚙"; }
+.icon-extensions::before { content: "⚡"; }
+
+/* 文件浏览器 */
+.file-explorer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.explorer-header {
+    padding: 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #bbbbbb;
+}
+
+.project-name {
+    padding: 5px 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.folder-icon::before {
+    content: "📁";
+    margin-right: 5px;
+}
+
+.file-tree {
+    padding: 5px 0;
+}
+
+.folder {
+    margin-bottom: 5px;
+}
+
+.folder-header {
+    padding: 2px 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.folder-content {
+    padding-left: 20px;
+}
+
+.file-item {
+    padding: 2px 10px 2px 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-item:hover {
+    background-color: #2a2d2e;
+}
+
+.file-item.active {
+    background-color: #37373d;
+}
+
+/* 编辑器区域 */
+.ide-editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #1e1e1e;
+    overflow: hidden;
+}
+
+.editor-tabs {
+    display: flex;
+    height: 35px;
+    background-color: #252526;
+    border-bottom: 1px solid #1e1e1e;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    background-color: #2d2d2d;
+    border-right: 1px solid #1e1e1e;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #1e1e1e;
+    border-top: 1px solid #007acc;
+}
+
+.close-tab {
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+.code-container {
+    flex: 1;
+    display: flex;
+    overflow: auto;
+    position: relative;
+}
+
+.line-numbers {
+    padding: 10px 10px 10px 20px;
+    background-color: #1e1e1e;
+    color: #858585;
+    text-align: right;
+    user-select: none;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.line-numbers div {
+    height: 20px;
+}
+
+.code-editor {
+    flex: 1;
+    padding: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: pre;
+    tab-size: 4;
+    overflow-x: auto;
+}
+
+/* 语法高亮 */
+.code-editor .keyword {
+    color: #569cd6;
+}
+
+.code-editor .string {
+    color: #ce9178;
+}
+
+.code-editor .comment {
+    color: #6a9955;
+    font-style: italic;
+}
+
+.code-editor .type {
+    color: #4ec9b0;
+}
+
+/* 光标 */
+.cursor {
+    display: none;
+    color: #d4d4d4;
+    font-weight: normal;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* 底部状态栏 */
+.ide-statusbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 22px;
+    background-color: #007acc;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 0 10px;
+}
+
+.status-left, .status-right {
+    display: flex;
+    align-items: center;
+}
+
+.status-left span, .status-right span {
+    margin: 0 8px;
+}
+
+.git-branch {
+    display: flex;
+    align-items: center;
+}
+
+.git-branch::before {
+    content: "⑂";
+    margin-right: 5px;
+}
+
+/* 代码行样式 */
+.code-editor .line {
+    height: 20px;
+    white-space: pre;
+}
+
+/* --- 海报生成专用样式 --- */
+/* 这个类在生成海报时临时添加到 main-content 上，以确保所有文字都清晰可见 */
+.poster-mode .countdown-label,
+.poster-mode .games-container h3,
+.poster-mode .main-footer,
+.poster-mode .main-footer p,
+.poster-mode .main-footer kbd {
+    color: #e0e0e0 !important; /* 使用最亮的文本颜色 */
+    text-shadow: none !important; /* 去掉可能导致模糊的阴影 */
+}
+
+.poster-mode #joke-section button {
+    color: var(--primary-glow-color) !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.poster-mode .game-list a {
+    color: var(--secondary-glow-color) !important;
+    text-shadow: none !important;
+}
+
+.poster-mode #motto-text {
+    color: var(--secondary-glow-color) !important;
+    text-shadow: none !important;
+}
