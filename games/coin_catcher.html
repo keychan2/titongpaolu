@@ -8,11 +8,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>摸鱼接金币</h1>
-        <div class="info-bar">
-            <span>得分: <span id="score">0</span></span>
-            <span> | </span>
-            <span>生命: <span id="lives">3</span></span>
+        <div class="header">
+            <h1>摸鱼接金币</h1>
+            <div class="info-bar">
+                <span>得分: <span id="score">0</span></span>
+                <span>生命: <span id="lives">3</span></span>
+            </div>
         </div>
         <div id="game-area">
             <div id="player"></div>
@@ -22,8 +23,38 @@
             <p>你的最终得分是: <span id="final-score">0</span></p>
             <button id="restart-button">重新开始</button>
         </div>
-        <p class="controls">使用 <kbd>←</kbd> 和 <kbd>→</kbd> 键移动</p>
+        <p class="controls">使用 <kbd>←</kbd> 和 <kbd>→</kbd> 键移动，或点击下方按钮</p>
+        <div class="navigation-buttons">
+            <button id="move-left">向左</button>
+            <button id="move-right">向右</button>
+        </div>
     </div>
+
+    <!-- 伪装工作屏幕 -->
+    <div id="fake-work-screen">
+        <pre><code><span class="keyword">function</span> <span class="function">calculateNextMilestone</span>(<span class="params">projectData</span>) {
+    <span class="comment">// TODO: Refactor this logic before the next sprint</span>
+    <span class="keyword">const</span> completedTasks = projectData.tasks.filter(<span class="params">t</span> => t.status === <span class="string">'DONE'</span>);
+    <span class="keyword">const</span> totalValue = completedTasks.reduce((<span class="params">acc</span>, <span class="params">task</span>) => acc + task.value, 0);
+
+    <span class="keyword">if</span> (totalValue > 1000) {
+        <span class="keyword">return</span> <span class="string">'Phase 2 Deployment'</span>;
+    } <span class="keyword">else if</span> (totalValue > 500) {
+        <span class="keyword">return</span> <span class="string">'Client Review'</span>;
+    }
+
+    <span class="keyword">return</span> <span class="string">'Initial Scaffolding'</span>;
+}
+
+<span class="comment">// User data simulation</span>
+<span class="keyword">const</span> user = {
+    id: <span class="number">101</span>,
+    username: <span class="string">'j.doe'</span>,
+    lastLogin: <span class="keyword">new</span> Date().toISOString(),
+    permissions: [<span class="string">'read'</span>, <span class="string">'write'</span>, <span class="string">'execute'</span>]
+};</code></pre>
+    </div>
+
     <script src="coin_catcher.js"></script>
 </body>
 </html>

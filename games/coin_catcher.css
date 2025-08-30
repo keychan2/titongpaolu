@@ -16,14 +16,27 @@ body {
     max-width: 500px;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
 .info-bar {
     font-size: 1.2em;
-    margin-bottom: 10px;
+    display: flex;
+    gap: 20px;
 }
 
 #game-area {
     width: 100%;
-    height: 600px;
+    height: 540px;
     background-color: #34495e;
     border: 2px solid #ecf0f1;
     border-radius: 10px;
@@ -32,10 +45,11 @@ body {
 }
 
 #player {
-    width: 50px;
-    height: 50px;
-    background-color: #e67e22;
-    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background-image: url('caishen.png');
+    background-size: contain;
+    background-repeat: no-repeat;
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -51,11 +65,11 @@ body {
 }
 
 .coin {
-    background-image: url('https://i.imgur.com/f1Z4J1k.png'); /* 金币图片 */
+    background-image: url('coin.png'); /* 金币图片 */
 }
 
 .bomb {
-    background-image: url('https://i.imgur.com/d3a6eZc.png'); /* 炸弹图片 */
+    background-image: url('boom.png'); /* 炸弹图片 */
 }
 
 #game-over {
@@ -76,4 +90,83 @@ body {
     margin-top: 10px;
     font-size: 0.9em;
     color: #bdc3c7;
+}
+
+.navigation-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.navigation-buttons button {
+    padding: 10px 25px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    box-shadow: 0 4px #2980b9;
+    transition: all 0.1s ease;
+}
+
+.navigation-buttons button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px #2980b9;
+}
+
+/* 伪装工作屏幕样式 */
+#fake-work-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1e1e1e; /* VS Code 默认深色主题背景 */
+    color: #d4d4d4;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 20px;
+    z-index: 100;
+    overflow: auto;
+    box-sizing: border-box;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+#fake-work-screen.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#fake-work-screen pre {
+    margin: 0;
+}
+
+#fake-work-screen .keyword {
+    color: #569cd6; /* 蓝色 */
+}
+
+#fake-work-screen .function {
+    color: #dcdcaa; /* 黄色 */
+}
+
+#fake-work-screen .params {
+    color: #9cdcfe; /* 淡蓝色 */
+}
+
+#fake-work-screen .comment {
+    color: #6a9955; /* 绿色 */
+}
+
+#fake-work-screen .string {
+    color: #ce9178; /* 橙色 */
+}
+
+#fake-work-screen .number {
+    color: #b5cea8; /* 淡绿色 */
 }
